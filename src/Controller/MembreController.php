@@ -45,5 +45,8 @@ public function register(Request $request, EntityManagerInterface $entityManager
         return $this->render("membre/register.html.twig", [
             'form' => $form->createView()
         ]);
+        
     }
+
+   
 }
