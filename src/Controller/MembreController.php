@@ -19,14 +19,14 @@ class MembreController extends AbstractController
      */
 public function register(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
-        # 1 - Instanciation de classe
+        
         $membre = new Membre();
 
-        # 2 - Création du formulaire
+        
         $form = $this->createForm(RegisterFormType::class, $membre)
             ->handleRequest($request);
 
-        # 3 - Si le form est soumis ET valide
+       
         if($form->isSubmitted() && $form->isValid()) {
             $membre->setRoles(['ROLE_USER']);
             $membre->setCreatedAt(new DateTime());
@@ -41,7 +41,7 @@ public function register(Request $request, EntityManagerInterface $entityManager
             return $this->redirectToRoute('app_login');
         }
 
-        # 4 - On retourne la vue du formulaire
+      
         return $this->render("membre/register.html.twig", [
             'form' => $form->createView()
         ]);
