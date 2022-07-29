@@ -14,18 +14,18 @@ class CommandeController extends AbstractController
 {
 
     /**
-    *@Route("/voir-commandes_{id}", name="show_commande", methods={"GET"}))
+    *@Route("/voir-commandes", name="show_commande", methods={"GET"})
     */
     public function showCommande(EntityManagerInterface $entityManager): Response
     {
-    $commande = $entityManager->getRepository(Commande::class)->findAll();
+    $commandes = $entityManager->getRepository(Commande::class)->findAll();
     return $this->render("/commande/show_commande.html.twig", [
-    'commande' => $commande
+    'commandes' => $commandes
     ]);
     }
 
     /**
-     * @Route("/ajouter-une-commande_{id}", name="create_commande", methods={"GET|POST"})
+     * @Route("/ajouter-une-commande", name="create_commande", methods={"GET|POST"})
      */
     public function createCommande(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -63,7 +63,7 @@ class CommandeController extends AbstractController
         } # end if ($form)
 
         # 4 - Création de la vue
-        return $this->render("commande\show_commande.html.twig", [
+        return $this->render("commande\create_commande.html.twig", [
             'form' => $form->createView(),
     
         ]);
@@ -126,7 +126,7 @@ class CommandeController extends AbstractController
         $entityManager->flush();
 
         $this->addFlash('success', "La commande a bien été restaurée");
-        return $this->redirectToRoute('show_commandes');
+        return $this->redirectToRoute('show_commande');
     }
 
     /**

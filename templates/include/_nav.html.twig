@@ -22,7 +22,7 @@
 					<a class="nav-link" href="#">Réservation</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Avis</a>
+					{# <a class="nav-link" href="#">Avis</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">L'hôtel</a>
@@ -32,16 +32,16 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Contact</a>
-				</li>
+				</li> #}
 
 			</ul>
-{# 
+
 			{% if app.user %}
 				<div class="text-nowrap mx-auto">Bonjour
 					<b>{{ app.user.firstname | capitalize }}</b>, vous êtes connecté en tant que :
 					<span class="text-info">{{ app.user.roles | first }}</span>
 				</div>
-			{% endif %} #}
+			{% endif %} 
 
 			{% if not app.user %}
 				<a class="nav-link text-decoration: none" href="{{ path('register_membre') }}">Inscription</a>
@@ -62,11 +62,11 @@
 								</li>
 								<li><hr class="dropdown-divider"></li>
 								<li>
-									<a class="dropdown-item" href="{{ path('show_membre') }}">Gestion des membres</a>
+									<a class="dropdown-item" href="{{ path('show_membre') }}"></a>
 								</li>
 								<li><hr class="dropdown-divider"></li>
 								<li>
-									<a class="dropdown-item" href="#">Gestion des chambres</a>
+									<a class="dropdown-item" href="{{ path('show_chambres') }}">Gestion des chambres</a>
 								</li>
 								<li><hr class="dropdown-divider"></li>
 								<li>
@@ -81,13 +81,14 @@
 
 					{% endif %}
 					<li class="nav-item">
-						<a class="nav-link" href="#">Espace perso</a>
-					</li>
-					<li class="nav-item">
 						<a class="nav-link text-danger" href="{{ path('app_logout') }}">Déconnexion
 							<i class="fa-solid fa-right-from-bracket"></i>
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Espace perso</a>
+					</li>
+					
 				{% endif %}
 			</ul>
 		</div>
