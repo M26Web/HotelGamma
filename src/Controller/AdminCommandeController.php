@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use DateTime;
 use App\Entity\Commande;
+use App\Form\CommandeFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,49 +26,49 @@ class AdminCommandeController extends AbstractController
         ]);
     }
 
-    // /**
-    //  * @Route("/ajouter-une-commande", name="create_commande", methods={"GET|POST"})
-    //  */
-    // public function createCommande(Request $request, EntityManagerInterface $entityManager): Response
-    // {
-    //     # 1 - Instanciation
-    //     $commande = new Commande();
+    /**
+     * @Route("/ajouter-une-commande", name="create_commande", methods={"GET|POST"})
+     */
+    public function createCommande(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        # 1 - Instanciation
+        $commande = new Commande();
 
-    //     # 2 - Création du formulaire
-    //     $form = $this->createForm(CommandeFormType::class, $commande)
-    //         ->handleRequest($request);
+        # 2 - Création du formulaire
+        $form = $this->createForm(CommandeFormType::class, $commande)
+            ->handleRequest($request);
 
-    //     if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
-    //         $commande->setCreatedAt(new DateTime());
-    //         $commande->setUpdatedAt(new DateTime());
+            $commande->setCreatedAt(new DateTime());
+            $commande->setUpdatedAt(new DateTime());
 
-    //         #3 Ajout des data de commande
-    //         $commande->getId();
-    //         $commande->getFirstname();
-    //         $commande->getChambre();
-    //         $commande->getChambre();
-    //         $commande->getDateArrival();
-    //         $commande->getDateDeparture();
-    //         $commande->getFirstname();
-    //         $commande->getLastname();
-    //         $commande->getPhone();
-    //         $commande->getEmail();
+            #3 Ajout des data de commande
+            $commande->getId();
+            $commande->getFirstname();
+            $commande->getChambre();
+            $commande->getChambre();
+            $commande->getDateArrival();
+            $commande->getDateDeparture();
+            $commande->getFirstname();
+            $commande->getLastname();
+            $commande->getPhone();
+            $commande->getEmail();
 
 
-    //         $entityManager->persist($commande);
-    //         $entityManager->flush();
+            $entityManager->persist($commande);
+            $entityManager->flush();
 
-    //         $this->addFlash('success', "Votre commande Administrateur a bien été ajoutée.");
-    //         return $this->redirectToRoute('show_commande');
-    //     } # end if ($form)
+            $this->addFlash('success', "Votre commande Administrateur a bien été ajoutée.");
+            return $this->redirectToRoute('show_commande');
+        } # end if ($form)
 
-    //     # 4 - Création de la vue
-    //     return $this->render("admin\admin_commande\create_commande.html.twig", [
-    //         'form' => $form->createView(),
+        # 4 - Création de la vue
+        return $this->render("admin\admin_commande\create_commande.html.twig", [
+            'form' => $form->createView(),
 
-    //     ]);
-    // } # end function createCommande
+        ]);
+    } # end function createCommande
 
 
     /**
