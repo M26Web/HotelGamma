@@ -10,7 +10,7 @@
 					<a class="nav-link active" aria-current="page" href="{{ path('default_home') }}">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Chambre</a>
+					<a class="nav-link" href="{{ path('show_chambres') }}">Chambre</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Restaurant</a>
@@ -19,7 +19,7 @@
 					<a class="nav-link" href="#">Spa</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Réservation</a>
+					<a class="nav-link" href="{{ path('show_reservation') }}">Réservation</a>
 				</li>
 				<li class="nav-item">
 					{# <a class="nav-link" href="#">Avis</a>
@@ -58,20 +58,16 @@
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<li>
-									<a class="dropdown-item" href="#">Tableau de bord</a>
+									<a class="dropdown-item" href="">Tableau de bord</a>
 								</li>
 								<li><hr class="dropdown-divider"></li>
-								{# <li>
-									<a class="dropdown-item" href="{{ path('show_membres') }}">Gestion des Membres</a>
-								</li> #}
+								
 								<li><hr class="dropdown-divider"></li>
 								<li>
 									<a class="dropdown-item" href="{{ path('show_chambres') }}">Gestion des chambres</a>
 								</li>
 								<li><hr class="dropdown-divider"></li>
-								{# <li>
-									<a class="dropdown-item" href="#">Gestion des commandes</a>
-								</li> #}
+								
 								<li><hr class="dropdown-divider"></li>
 								<li>
 									<a class="dropdown-item" href="{{ path('show_slider') }}">Gestion du slider</a>
@@ -86,8 +82,9 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Espace perso</a>
+						<a class="nav-link" href="">Espace perso</a>
 					</li>
+					
 					
 				{% endif %}
 			</ul>
