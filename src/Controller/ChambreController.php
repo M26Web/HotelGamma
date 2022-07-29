@@ -5,6 +5,7 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Chambre;
 use App\Form\ChambreFormType;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,9 +54,6 @@ class ChambreController extends AbstractController
             $chambre->setCreatedAt(new DateTime());
             $chambre->setUpdatedAt(new DateTime());
 
-            // # L'alias sera utilisé dans l'url (comme FranceTvInfo) et donc doit être assaini de tout accents et espaces.
-            // $chambre->setAlias($slugger->slug($chambre->getTitle()));
-
             /** @var UploadedFile $photo */
             $photo = $form->get('photo')->getData();
 
@@ -63,7 +61,7 @@ class ChambreController extends AbstractController
                 $extension = '.' . $photo->guessExtension();
                 $originalFilename = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
-//                $safeFilename = $chambre->getAlias();
+//               
                 $newFilename = $safeFilename . '_' . uniqid() . $extension;
 
                 try {
@@ -71,7 +69,7 @@ class ChambreController extends AbstractController
                     $chambre->setPhoto($newFilename);
                 }
                 catch(FileException $exception) {
-                    # Code à exécuter en cas d'erreur.
+                    
                 }
             } # end if($photo)
 
@@ -103,8 +101,7 @@ class ChambreController extends AbstractController
 
             $chambre->setUpdatedAt(new DateTime());
 
-            // # L'alias sera utilisé dans l'url (comme FranceTvInfo) et donc doit être assaini de tout accents et espaces.
-            // $chambre->setAlias($slugger->slug($chambre->getTitle()));
+        
 
             /** @var UploadedFile $photo */
             $photo = $form->get('photo')->getData();
@@ -113,7 +110,7 @@ class ChambreController extends AbstractController
                 $extension = '.' . $photo->guessExtension();
                 $originalFilename = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
-//                $safeFilename = $chambre->getAlias();
+//               
 
                 $newFilename = $safeFilename . '_' . uniqid() . $extension;
 

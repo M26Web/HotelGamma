@@ -4,9 +4,7 @@ namespace App\Controller;
 
 use DateTime;
 use App\Entity\Membre;
-use App\Entity\Commande;
 use App\Form\MembreFormType;
-use App\Form\RegisterFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -80,6 +78,4 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('show_membre');
     }
 
-
-  
 }

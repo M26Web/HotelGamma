@@ -46,9 +46,9 @@
 						<td>{{ membre.id }}</td>
 						<td>{{ membre.email }}</td>
 						<td>{{ membre.roles | first }}
-							{# {% for role in membre.roles %}
+							{% for role in membre.roles %}
 							{{role}}
-							{% endfor %} #}
+							{% endfor %}
 						</td>
 						<td>{{ membre.pseudo }}</td>
 						<td>{{ membre.lastname }}</td>
