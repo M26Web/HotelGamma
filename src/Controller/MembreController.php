@@ -46,7 +46,7 @@ public function register(Request $request, EntityManagerInterface $entityManager
         //     'form' => $form->createView()
         // ]);
         
-    }
+    
 
     // /**
     //  * @Route("/user/changer-mot-de-passe", name="change_password", methods={"GET|POST"})
